@@ -308,9 +308,19 @@
                                 @endcan
 
                                 @can('message_edit')
+<!--
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.messages.edit', $message->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
+-->
+                         <form  action="/INOUT/admin/messages/editpost"  method="POST" style="display: inline-block;">
+                                        <input type="hidden" name="ideditpost" value="{{$message->id}}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                           <input type="submit" class="btn btn-xs btn-info" value="{{ trans('global.edit') }}">
+                                    </form>
+                                
+                                
+                                
                                 @endcan
 
                                 @can('message_delete')

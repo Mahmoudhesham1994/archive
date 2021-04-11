@@ -59,6 +59,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
   Route::get('message/exp', 'MessagesController@exp');
     Route::get('message/emp', 'MessagesController@emp');
     
+     Route::post('messages/editpost', 'MessagesController@editpost');
+  
+    
+    
     
     // Msg Types
     Route::delete('msg-types/destroy', 'MsgTypesController@massDestroy')->name('msg-types.massDestroy');
