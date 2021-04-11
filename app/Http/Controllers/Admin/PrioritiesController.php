@@ -36,6 +36,17 @@ class PrioritiesController extends Controller
         return redirect()->route('admin.priorities.index');
 
     }
+            public function editpost(Request $request)
+            
+        {
+                
+             abort_if(Gate::denies('priority_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+           // dd($request->ideditpost);
+            $priority = Priority::find($request->ideditpost);
+                
+       return view('admin.priorities.edit', compact('priority'));
+                
+            }
 
     public function edit(Priority $priority)
     {
@@ -52,6 +63,14 @@ class PrioritiesController extends Controller
 
     }
 
+        public function showpost(Request $request)
+    {
+           abort_if(Gate::denies('priority_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+          $priority = Priority::find($request->idshowpost);
+        return view('admin.priorities.show', compact('priority'));
+     }
+    
+    
     public function show(Priority $priority)
     {
         abort_if(Gate::denies('priority_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');

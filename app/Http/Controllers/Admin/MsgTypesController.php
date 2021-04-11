@@ -36,6 +36,17 @@ class MsgTypesController extends Controller
         return redirect()->route('admin.msg-types.index');
 
     }
+          public function editpost(Request $request)
+            
+        {
+                
+             abort_if(Gate::denies('msg_type_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+           
+            $msgType = MsgType::find($request->ideditpost);
+                
+    return view('admin.msgTypes.edit', compact('msgType'));
+                
+            }
 
     public function edit(MsgType $msgType)
     {
@@ -51,7 +62,13 @@ class MsgTypesController extends Controller
         return redirect()->route('admin.msg-types.index');
 
     }
-
+     public function showpost(Request $request)
+    {
+        abort_if(Gate::denies('msg_type_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+          $msgType = MsgType::find($request->idshowpost);
+    return view('admin.msgTypes.show', compact('msgType'));
+         
+     }
     public function show(MsgType $msgType)
     {
         abort_if(Gate::denies('msg_type_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');

@@ -36,6 +36,20 @@ class ContactsController extends Controller
         return redirect()->route('admin.contacts.index');
 
     }
+    
+    
+      public function editpost(Request $request)
+            
+        {
+                
+           abort_if(Gate::denies('contact_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+           
+            $contact = Contact::find($request->ideditpost);
+                
+
+        return view('admin.contacts.edit', compact('contact'));
+                
+            }
 
     public function edit(Contact $contact)
     {
@@ -51,7 +65,12 @@ class ContactsController extends Controller
         return redirect()->route('admin.contacts.index');
 
     }
-
+     public function showpost(Request $request)
+    {
+         abort_if(Gate::denies('contact_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+          $contact = Contact::find($request->idshowpost);
+   return view('admin.contacts.show', compact('contact'));
+     }
     public function show(Contact $contact)
     {
         abort_if(Gate::denies('contact_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');

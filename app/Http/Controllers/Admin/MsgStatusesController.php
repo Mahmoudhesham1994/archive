@@ -36,6 +36,18 @@ class MsgStatusesController extends Controller
         return redirect()->route('admin.msg-statuses.index');
 
     }
+    
+           public function editpost(Request $request)
+            
+        {
+                
+           abort_if(Gate::denies('msg_status_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+           
+            $msgStatus = MsgStatus::find($request->ideditpost);
+                
+    return view('admin.msgStatuses.edit', compact('msgStatus'));
+                
+            }
 
     public function edit(MsgStatus $msgStatus)
     {
@@ -51,7 +63,12 @@ class MsgStatusesController extends Controller
         return redirect()->route('admin.msg-statuses.index');
 
     }
-
+     public function showpost(Request $request)
+    {
+         abort_if(Gate::denies('msg_status_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+          $msgStatus = MsgStatus::find($request->idshowpost);
+     return view('admin.msgStatuses.show', compact('msgStatus'));
+     }
     public function show(MsgStatus $msgStatus)
     {
         abort_if(Gate::denies('msg_status_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');

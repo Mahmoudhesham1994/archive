@@ -198,15 +198,35 @@
                             </td>
                             <td>
                                 @can('archive_show')
+<!--
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.archives.show', $archive->id) }}">
-                                        {{ trans('global.view') }}
+                                        00{{ trans('global.view') }}
                                     </a>
+-->
+                                
+                                     <form  action="/INOUT/admin/archives/showpost"  method="POST" style="display: inline-block;">
+                                        <input type="hidden" name="idshowpost" value="{{$archive->id}}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                   <input type="submit" class="btn btn-xs btn-primary" value="{{ trans('global.view') }}">
+                                    </form>        
+                                
+                                
                                 @endcan
 
                                 @can('archive_edit')
+<!--
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.archives.edit', $archive->id) }}">
-                                        {{ trans('global.edit') }}
+                                      00  {{ trans('global.edit') }}
                                     </a>
+-->
+                                
+                      <form  action="/INOUT/admin/archives/editpost"  method="POST" style="display: inline-block;">
+                                        <input type="hidden" name="ideditpost" value="{{$archive->id}}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                           <input type="submit" class="btn btn-xs btn-info" value="{{ trans('global.edit') }}">
+                                    </form>
+                                
+                                
                                 @endcan
 
                                 @can('archive_delete')

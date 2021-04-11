@@ -36,7 +36,18 @@ class PermissionsController extends Controller
         return redirect()->route('admin.permissions.index');
 
     }
+  public function editpost(Request $request)
+            
+        {
+                
+          abort_if(Gate::denies('permission_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+           
+            $permission = Permission::find($request->ideditpost);
+                
+              return view('admin.permissions.edit', compact('permission'));
 
+                
+            }
     public function edit(Permission $permission)
     {
         abort_if(Gate::denies('permission_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -51,7 +62,12 @@ class PermissionsController extends Controller
         return redirect()->route('admin.permissions.index');
 
     }
-
+        public function showpost(Request $request)
+    {
+        abort_if(Gate::denies('permission_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+          $permission = Permission::find($request->idshowpost);
+     return view('admin.permissions.show', compact('permission'));
+     }
     public function show(Permission $permission)
     {
         abort_if(Gate::denies('permission_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');

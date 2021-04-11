@@ -47,15 +47,38 @@
                             </td>
                             <td>
                                 @can('doc_type_show')
+<!--
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.doc-types.show', $docType->id) }}">
-                                        {{ trans('global.view') }}
+                                        11{{ trans('global.view') }}
                                     </a>
+-->
+                                
+                                
+                                <form  action="/INOUT/admin/doc-types/showpost"  method="POST" style="display: inline-block;">
+                                        <input type="hidden" name="idshowpost" value="{{$docType->id}}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                           <input type="submit" class="btn btn-xs btn-primary" value="{{ trans('global.view') }}">
+                                    </form>       
+                                
+                                
+                                
                                 @endcan
 
                                 @can('doc_type_edit')
+<!--
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.doc-types.edit', $docType->id) }}">
-                                        {{ trans('global.edit') }}
+                                       11 {{ trans('global.edit') }}
                                     </a>
+-->
+                                
+                                
+                           <form  action="/INOUT/admin/doc-types/editpost"  method="POST" style="display: inline-block;">
+                                        <input type="hidden" name="ideditpost" value="{{$docType->id}}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                           <input type="submit" class="btn btn-xs btn-info" value="{{ trans('global.edit') }}">
+                                    </form>         
+                                
+                                
                                 @endcan
 
                                 @can('doc_type_delete')

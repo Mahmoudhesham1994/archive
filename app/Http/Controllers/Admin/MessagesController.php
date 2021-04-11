@@ -495,6 +495,7 @@ $count_type =  count($stack)+1;
         public function editpost(Request $request)
             
         {
+             abort_if(Gate::denies('message_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
            // dd($request->ideditpost);
             $message = Message::find($request->ideditpost);
           //  echo $message;
@@ -618,6 +619,17 @@ $count_type =  count($stack)+1;
 
         return redirect()->route('admin.messages.index');
 
+    }
+    
+    public function showpost(Request $request)
+    {
+         abort_if(Gate::denies('message_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+          $message = Message::find($request->idshowpost);
+                $message->load('msg_type', 'doc_type', 'from_contact', 'priority', 'rel_num', 'sent_tos', 'forward_to');
+
+        return view('admin.messages.show', compact('message'));
+
+        
     }
 
     public function show(Message $message)

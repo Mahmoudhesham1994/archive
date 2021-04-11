@@ -302,9 +302,20 @@
                             </td>--}}
                             <td>
                                 @can('message_show')
+<!--
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.messages.show', $message->id) }}">
-                                        {{ trans('global.view') }}
+                                       00 {{ trans('global.view') }}
                                     </a>
+-->
+                                
+                                
+                  <form  action="/INOUT/admin/messages/showpost"  method="POST" style="display: inline-block;">
+                                        <input type="hidden" name="idshowpost" value="{{$message->id}}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                           <input type="submit" class="btn btn-xs btn-primary" value="{{ trans('global.view') }}">
+                                    </form>               
+                                
+                                
                                 @endcan
 
                                 @can('message_edit')

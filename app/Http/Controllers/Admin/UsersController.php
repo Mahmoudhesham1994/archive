@@ -40,7 +40,22 @@ class UsersController extends Controller
         return redirect()->route('admin.users.index');
 
     }
+public function editpost(Request $request)
+            
+        {
+                
+             abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+           
+            $user = User::find($request->ideditpost);
+                
+        $roles = Role::all()->pluck('title', 'id');
+
+        $user->load('roles');
+
+        return view('admin.users.edit', compact('roles', 'user'));
+                
+            }
     public function edit(User $user)
     {
         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -60,7 +75,13 @@ class UsersController extends Controller
         return redirect()->route('admin.users.index');
 
     }
+     public function showpost(Request $request)
+    {
+      abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+          $user = User::find($request->idshowpost);
+ $user->load('roles');
 
+        return view('admin.users.show', compact('user'));     }
     public function show(User $user)
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
