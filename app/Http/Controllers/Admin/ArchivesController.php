@@ -344,7 +344,9 @@ if (is_array($request->file('archive_doc')) || is_object($request->file('archive
         $archive->delete();
 //dd(back());
      //   return back();
-    return redirect('http://172.23.101.27/INOUT/admin/archives');
+//    return redirect('http://172.23.101.27/INOUT/admin/archives');
+     //   {{asset('/admin/archives/editpost') }}
+    return redirect(asset('/admin/archives'));
 
     }
 

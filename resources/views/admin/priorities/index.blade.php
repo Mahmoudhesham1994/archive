@@ -53,7 +53,8 @@
                                     </a>
 -->
                                 
-                                <form  action="/INOUT/admin/priorities/showpost"  method="POST" style="display: inline-block;">
+                                <form  action="{{asset('/admin/priorities/showpost') }}"  method="POST" style="display: inline-block;">
+<!--                                <form  action="/INOUT/admin/priorities/showpost"  method="POST" style="display: inline-block;">-->
                                         <input type="hidden" name="idshowpost" value="{{$priority->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            <input type="submit" class="btn btn-xs btn-primary" value="{{ trans('global.view') }}">
@@ -69,7 +70,8 @@
                                     </a>
 -->
                                 
-                                <form  action="/INOUT/admin/priorities/editpost"  method="POST" style="display: inline-block;">
+                                <form  action="{{asset('/admin/priorities/editpost') }}"  method="POST" style="display: inline-block;">
+<!--                                <form  action="/INOUT/admin/priorities/editpost"  method="POST" style="display: inline-block;">-->
                                         <input type="hidden" name="ideditpost" value="{{$priority->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            <input type="submit" class="btn btn-xs btn-info" value="{{ trans('global.edit') }}">

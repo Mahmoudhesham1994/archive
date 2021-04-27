@@ -11,7 +11,9 @@
 @endcan
 <div class="card">
     <div class="card-header">
-         <form method="POST" action="/INOUT/admin/archives/search">
+        
+         <form method="POST" action="{{asset('/admin/archives/search') }}">
+<!--         <form method="POST" action="/INOUT/admin/archives/search">-->
         @csrf
      <div class="container-fluid ">
         <div class="row">
@@ -204,7 +206,8 @@
                                     </a>
 -->
                                 
-                                     <form  action="/INOUT/admin/archives/showpost"  method="POST" style="display: inline-block;">
+<!--                                     <form  action="/INOUT/admin/archives/showpost"  method="POST" style="display: inline-block;">-->
+                                     <form  action="{{asset('/admin/archives/showpost') }}"  method="POST" style="display: inline-block;">
                                         <input type="hidden" name="idshowpost" value="{{$archive->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                    <input type="submit" class="btn btn-xs btn-primary" value="{{ trans('global.view') }}">
@@ -220,7 +223,8 @@
                                     </a>
 -->
                                 
-                      <form  action="/INOUT/admin/archives/editpost"  method="POST" style="display: inline-block;">
+<!--                      <form  action="/INOUT/admin/archives/editpost"  method="POST" style="display: inline-block;">-->
+                      <form  action="{{asset('/admin/archives/editpost') }}"  method="POST" style="display: inline-block;">
                                         <input type="hidden" name="ideditpost" value="{{$archive->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            <input type="submit" class="btn btn-xs btn-info" value="{{ trans('global.edit') }}">

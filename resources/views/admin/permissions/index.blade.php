@@ -54,7 +54,8 @@
 -->
                                 
                                            
-                                <form  action="/INOUT/admin/permissions/showpost"  method="POST" style="display: inline-block;">
+        <form  action="{{asset('/admin/permissions/showpost') }}"  method="POST" style="display: inline-block;">
+<!--                                <form  action="/INOUT/admin/permissions/showpost"  method="POST" style="display: inline-block;">-->
                                         <input type="hidden" name="idshowpost" value="{{$permission->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            <input type="submit" class="btn btn-xs btn-primary" value="{{ trans('global.view') }}">
@@ -69,7 +70,8 @@
                                     </a>
 -->
                                 
-                                 <form  action="/INOUT/admin/permissions/editpost"  method="POST" style="display: inline-block;">
+                                 <form  action="{{asset('/admin/permissions/editpost') }}"  method="POST" style="display: inline-block;">
+<!--                                 <form  action="/INOUT/admin/permissions/editpost"  method="POST" style="display: inline-block;">-->
                                         <input type="hidden" name="ideditpost" value="{{$permission->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            <input type="submit" class="btn btn-xs btn-info" value="{{ trans('global.edit') }}">

@@ -72,7 +72,9 @@
                                     </a>
 -->
                                 
-                                      <form  action="/INOUT/admin/contacts/showpost"  method="POST" style="display: inline-block;">
+<!--                                      <form  action="/INOUT/admin/contacts/showpost"  method="POST" style="display: inline-block;">-->
+                               
+                                      <form  action=" {{asset('/admin/contacts/showpost') }}"  method="POST" style="display: inline-block;">
                                         <input type="hidden" name="idshowpost" value="{{$contact->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            <input type="submit" class="btn btn-xs btn-primary" value="{{ trans('global.view') }}">
@@ -90,7 +92,8 @@
                                 
                                 
                                 
-                                 <form  action="/INOUT/admin/contacts/editpost"  method="POST" style="display: inline-block;">
+                                 <form  action="{{asset('/admin/contacts/editpost') }}"  method="POST" style="display: inline-block;">
+<!--                                 <form  action="/INOUT/admin/contacts/editpost"  method="POST" style="display: inline-block;">-->
                                         <input type="hidden" name="ideditpost" value="{{$contact->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            <input type="submit" class="btn btn-xs btn-info" value="{{ trans('global.edit') }}">

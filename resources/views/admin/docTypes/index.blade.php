@@ -54,7 +54,8 @@
 -->
                                 
                                 
-                                <form  action="/INOUT/admin/doc-types/showpost"  method="POST" style="display: inline-block;">
+                                <form  action="{{asset('/admin/doc-types/showpost') }}"  method="POST" style="display: inline-block;">
+<!--                                <form  action="/INOUT/admin/doc-types/showpost"  method="POST" style="display: inline-block;">-->
                                         <input type="hidden" name="idshowpost" value="{{$docType->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            <input type="submit" class="btn btn-xs btn-primary" value="{{ trans('global.view') }}">
@@ -72,7 +73,8 @@
 -->
                                 
                                 
-                           <form  action="/INOUT/admin/doc-types/editpost"  method="POST" style="display: inline-block;">
+                           <form  action="{{asset('/admin/doc-types/editpost') }}"  method="POST" style="display: inline-block;">
+<!--                           <form  action="/INOUT/admin/doc-types/editpost"  method="POST" style="display: inline-block;">-->
                                         <input type="hidden" name="ideditpost" value="{{$docType->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            <input type="submit" class="btn btn-xs btn-info" value="{{ trans('global.edit') }}">

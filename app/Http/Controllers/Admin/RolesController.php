@@ -67,6 +67,7 @@ class RolesController extends Controller
 
     public function update(UpdateRoleRequest $request, Role $role)
     {
+        
         $role->update($request->all());
         $role->permissions()->sync($request->input('permissions', []));
 

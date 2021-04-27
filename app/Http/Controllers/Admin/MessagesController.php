@@ -648,8 +648,8 @@ $count_type =  count($stack)+1;
         $message->delete();
 
      //   return back();
-    return redirect('http://172.23.101.27/INOUT/admin/messages');
-
+ //   return redirect('http://172.23.101.27/INOUT/admin/messages');
+ return redirect(asset('/admin/messages'));
     }
 
     public function massDestroy(MassDestroyMessageRequest $request)

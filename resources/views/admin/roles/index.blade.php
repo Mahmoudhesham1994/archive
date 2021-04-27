@@ -55,12 +55,15 @@
                             </td>
                             <td>
                                 @can('role_show')
+<!--
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.roles.show', $role->id) }}">
                                       00  {{ trans('global.view') }}
                                     </a>
+-->
                                 
                                            
-                                <form  action="/INOUT/admin/roles/showpost"  method="POST" style="display: inline-block;">
+        <form  action="{{asset('/admin/roles/showpost') }}"  method="POST" style="display: inline-block;">
+<!--                                <form  action="/INOUT/admin/roles/showpost"  method="POST" style="display: inline-block;">-->
                                         <input type="hidden" name="idshowpost" value="{{$role->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            <input type="submit" class="btn btn-xs btn-primary" value="{{ trans('global.view') }}">
@@ -68,12 +71,15 @@
                                 @endcan
 
                                 @can('role_edit')
+<!--
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.roles.edit', $role->id) }}">
                                     00    {{ trans('global.edit') }}
                                     </a>
+-->
                                 
                                 
-                                  <form  action="/INOUT/admin/roles/editpost"  method="POST" style="display: inline-block;">
+                                  <form  action="{{asset('/admin/roles/editpost') }}"  method="POST" style="display: inline-block;">
+<!--                                  <form  action="/INOUT/admin/roles/editpost"  method="POST" style="display: inline-block;">-->
                                         <input type="hidden" name="ideditpost" value="{{$role->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            <input type="submit" class="btn btn-xs btn-info" value="{{ trans('global.edit') }}">

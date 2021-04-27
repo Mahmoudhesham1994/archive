@@ -74,7 +74,8 @@
 -->
                                 
                                 
-                                    <form  action="/INOUT/admin/users/showpost"  method="POST" style="display: inline-block;">
+                                    <form  action="{{asset('/admin/users/showpost') }}"  method="POST" style="display: inline-block;">
+<!--                                    <form  action="/INOUT/admin/users/showpost"  method="POST" style="display: inline-block;">-->
                                         <input type="hidden" name="idshowpost" value="{{$user->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            <input type="submit" class="btn btn-xs btn-primary" value="{{ trans('global.view') }}">
@@ -89,7 +90,8 @@
 -->
                                 
                                 
-                                  <form  action="/INOUT/admin/users/editpost"  method="POST" style="display: inline-block;">
+                                  <form  action="{{asset('/admin/users/editpost') }}"  method="POST" style="display: inline-block;">
+<!--                                      <form  action="/INOUT/admin/users/editpost"  method="POST" style="display: inline-block;">-->
                                         <input type="hidden" name="ideditpost" value="{{$user->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            <input type="submit" class="btn btn-xs btn-info" value="{{ trans('global.edit') }}">

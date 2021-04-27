@@ -54,7 +54,8 @@
 -->
                                 
                                 
-                                       <form  action="/INOUT/admin/msg-types/showpost"  method="POST" style="display: inline-block;">
+                        <form  action="{{asset('/admin/msg-types/showpost') }}"  method="POST" style="display: inline-block;">
+<!--                                       <form  action="/INOUT/admin/msg-types/showpost"  method="POST" style="display: inline-block;">-->
                                         <input type="hidden" name="idshowpost" value="{{$msgType->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            <input type="submit" class="btn btn-xs btn-primary" value="{{ trans('global.view') }}">
@@ -70,7 +71,8 @@
                                 
                                 
                                 
-                                   <form  action="/INOUT/admin/msg-types/editpost"  method="POST" style="display: inline-block;">
+                                   <form  action="{{asset('/admin/msg-types/editpost') }}"  method="POST" style="display: inline-block;">
+<!--                                   <form  action="/INOUT/admin/msg-types/editpost"  method="POST" style="display: inline-block;">-->
                                         <input type="hidden" name="ideditpost" value="{{$msgType->id}}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            <input type="submit" class="btn btn-xs btn-info" value="{{ trans('global.edit') }}">
