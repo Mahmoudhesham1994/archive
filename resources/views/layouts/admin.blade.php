@@ -134,8 +134,7 @@
 </script>
 
 <!-- Bootstrap 4 rtl -->
-<!--<script src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js"></script>-->
-    <script src="{{url('public/js2/bootstrap.min.js')}}"></script>
+<script src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="{{url('public/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- ChartJS -->
@@ -164,8 +163,7 @@
 <script src="{{url('public/dist/js/demo.js')}}"></script>
     
     
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>-->
-     <script src="{{url('public/js2/select2.full.min.js')}}"></script>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
 
     <script src="{{ url('public/js/main.js') }}"></script>
  

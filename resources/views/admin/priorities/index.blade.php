@@ -47,37 +47,15 @@
                             </td>
                             <td>
                                 @can('priority_show')
-<!--
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.priorities.show', $priority->id) }}">
-                                       00 {{ trans('global.view') }}
+                                        {{ trans('global.view') }}
                                     </a>
--->
-                                
-                                <form  action="{{asset('/admin/priorities/showpost') }}"  method="POST" style="display: inline-block;">
-<!--                                <form  action="/INOUT/admin/priorities/showpost"  method="POST" style="display: inline-block;">-->
-                                        <input type="hidden" name="idshowpost" value="{{$priority->id}}">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                           <input type="submit" class="btn btn-xs btn-primary" value="{{ trans('global.view') }}">
-                                    </form>      
-                                
-                                
                                 @endcan
 
                                 @can('priority_edit')
-<!--
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.priorities.edit', $priority->id) }}">
-                                        00{{ trans('global.edit') }}
+                                        {{ trans('global.edit') }}
                                     </a>
--->
-                                
-                                <form  action="{{asset('/admin/priorities/editpost') }}"  method="POST" style="display: inline-block;">
-<!--                                <form  action="/INOUT/admin/priorities/editpost"  method="POST" style="display: inline-block;">-->
-                                        <input type="hidden" name="ideditpost" value="{{$priority->id}}">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                           <input type="submit" class="btn btn-xs btn-info" value="{{ trans('global.edit') }}">
-                                    </form>
-                                
-                                
                                 @endcan
 
                                 @can('priority_delete')

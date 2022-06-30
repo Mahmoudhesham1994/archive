@@ -15,9 +15,7 @@
 
     
 <!--    <form method="POST" action="/admin/messages/search">-->
-<!--     {{asset('/admin/doc-types/editpost') }}-->
-    <form method="POST" action="{{asset('/admin/messages/search') }}">
-<!--    <form method="POST" action="/INOUT/admin/messages/search">-->
+    <form method="POST" action="/INOUT/admin/messages/search">
         @csrf
      <div class="container-fluid ">
         <div class="row">
@@ -304,38 +302,15 @@
                             </td>--}}
                             <td>
                                 @can('message_show')
-<!--
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.messages.show', $message->id) }}">
-                                       00 {{ trans('global.view') }}
+                                        {{ trans('global.view') }}
                                     </a>
--->
-                                
-                                
-                  <form  action="{{asset('/admin/messages/showpost') }}"  method="POST" style="display: inline-block;">
-<!--                  <form  action="/INOUT/admin/messages/showpost"  method="POST" style="display: inline-block;">-->
-                                        <input type="hidden" name="idshowpost" value="{{$message->id}}">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                           <input type="submit" class="btn btn-xs btn-primary" value="{{ trans('global.view') }}">
-                                    </form>               
-                                
-                                
                                 @endcan
 
                                 @can('message_edit')
-<!--
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.messages.edit', $message->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
--->
-                         <form  action="{{asset('/admin/messages/editpost') }}"  method="POST" style="display: inline-block;">
-<!--                         <form  action="/INOUT/admin/messages/editpost"  method="POST" style="display: inline-block;">-->
-                                        <input type="hidden" name="ideditpost" value="{{$message->id}}">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                           <input type="submit" class="btn btn-xs btn-info" value="{{ trans('global.edit') }}">
-                                    </form>
-                                
-                                
-                                
                                 @endcan
 
                                 @can('message_delete')

@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="password">{{ trans('cruds.user.fields.password') }}</label>
-                <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" id="password" required>
+                <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" id="password">
                 @if($errors->has('password'))
                     <span class="text-danger">{{ $errors->first('password') }}</span>
                 @endif

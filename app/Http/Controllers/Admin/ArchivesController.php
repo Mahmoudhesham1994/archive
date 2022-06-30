@@ -221,23 +221,6 @@ if (is_array($request->file('archive_doc')) || is_object($request->file('archive
           return redirect()->route('admin.archives.index');
     }
 
-    
-            public function editpost(Request $request)
-            
-        {
-            abort_if(Gate::denies('archive_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-           // dd($request->ideditpost);
-            $archive = Archive::find($request->ideditpost);
-
-                        $doc_types = DocType::all()->pluck('doc_type_desc', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $archive->load('doc_type');
-      //  echo $archive;
-
-//echo $archive->archive_doc;
-        return view('admin.archives.edit', compact('doc_types', 'archive'));
-
-            }
     public function edit(Archive $archive)
     {
         abort_if(Gate::denies('archive_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -315,17 +298,6 @@ if (is_array($request->file('archive_doc')) || is_object($request->file('archive
         return redirect()->route('admin.archives.index');
 
     }
-    
-        public function showpost(Request $request)
-    {
-        abort_if(Gate::denies('archive_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-          $archive = Archive::find($request->idshowpost);
-                    $archive->load('doc_type');
-
-        return view('admin.archives.show', compact('archive'));
-
-
-        }
 
     public function show(Archive $archive)
     {
@@ -344,9 +316,7 @@ if (is_array($request->file('archive_doc')) || is_object($request->file('archive
         $archive->delete();
 //dd(back());
      //   return back();
-//    return redirect('http://172.23.101.27/INOUT/admin/archives');
-     //   {{asset('/admin/archives/editpost') }}
-    return redirect(asset('/admin/archives'));
+    return redirect('http://172.23.101.244/INOUT/admin/archives');
 
     }
 

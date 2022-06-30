@@ -195,7 +195,7 @@
                 <br>
                    @foreach($message->message_doc as $key => $media)
 <!--                                 <a href="{{ substr_replace($media->getUrl(),":8000",16,0) }}" target="_blank">-->
-                           <a href="http://172.23.101.27/INOUT/public/messages/{{$media->file_name}}" target="_blank">
+                           <a href="http://172.23.101.244/INOUT/public/messages/{{$media->file_name}}" target="_blank">
 
                                     {{ trans('global.view_file') }}
                                  </a>

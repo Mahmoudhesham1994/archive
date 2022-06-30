@@ -47,36 +47,15 @@
                             </td>
                             <td>
                                 @can('msg_status_show')
-<!--
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.msg-statuses.show', $msgStatus->id) }}">
-                                       00 {{ trans('global.view') }}
+                                        {{ trans('global.view') }}
                                     </a>
--->
-                                
-                                
-                                    <form  action="{{asset('/admin/msg-statuses/showpost') }}"  method="POST" style="display: inline-block;">
-<!--                                    <form  action="/INOUT/admin/msg-statuses/showpost"  method="POST" style="display: inline-block;">-->
-                                        <input type="hidden" name="idshowpost" value="{{$msgStatus->id}}">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                           <input type="submit" class="btn btn-xs btn-primary" value="{{ trans('global.view') }}">
-                                    </form> 
                                 @endcan
 
                                 @can('msg_status_edit')
-<!--
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.msg-statuses.edit', $msgStatus->id) }}">
-                                       00 {{ trans('global.edit') }}
+                                        {{ trans('global.edit') }}
                                     </a>
--->
-                                
-                                
-                                         <form  action="{{asset('/admin/msg-statuses/editpost') }}"  method="POST" style="display: inline-block;">
-<!--                                         <form  action="/INOUT/admin/msg-statuses/editpost"  method="POST" style="display: inline-block;">-->
-                                        <input type="hidden" name="ideditpost" value="{{$msgStatus->id}}">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                           <input type="submit" class="btn btn-xs btn-info" value="{{ trans('global.edit') }}">
-                                    </form>
-                                
                                 @endcan
 
                                 @can('msg_status_delete')

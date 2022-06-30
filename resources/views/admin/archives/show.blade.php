@@ -77,7 +77,7 @@
                             @foreach($archive->archive_doc as $key => $media)
 <!--             <a href="http://localhost:8000/archive/{{$media->file_name}}" target="_blank">-->
  <!--             <a href="{{Storage::disk('fileStore')->url($media->file_name)}}" target="_blank">-->
-             <a href="http://172.23.101.27/INOUT/public/archive/{{$media->file_name}}" target="_blank">
+             <a href="http://172.23.101.244/INOUT/public/archive/{{$media->file_name}}" target="_blank">
                  {{ trans('global.view_file') }}</a>
 <!--
                                 <a href="{{ substr_replace($media->getUrl(),":8000",16,0)}}" target="_blank">

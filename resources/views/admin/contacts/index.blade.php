@@ -66,38 +66,15 @@
                             </td>
                             <td>
                                 @can('contact_show')
-<!--
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.contacts.show', $contact->id) }}">
-                                       00 {{ trans('global.view') }}
+                                        {{ trans('global.view') }}
                                     </a>
--->
-                                
-<!--                                      <form  action="/INOUT/admin/contacts/showpost"  method="POST" style="display: inline-block;">-->
-                               
-                                      <form  action=" {{asset('/admin/contacts/showpost') }}"  method="POST" style="display: inline-block;">
-                                        <input type="hidden" name="idshowpost" value="{{$contact->id}}">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                           <input type="submit" class="btn btn-xs btn-primary" value="{{ trans('global.view') }}">
-                                    </form>  
-                                
-                                
                                 @endcan
 
                                 @can('contact_edit')
-<!--
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.contacts.edit', $contact->id) }}">
-                                   00     {{ trans('global.edit') }}
+                                        {{ trans('global.edit') }}
                                     </a>
--->
-                                
-                                
-                                
-                                 <form  action="{{asset('/admin/contacts/editpost') }}"  method="POST" style="display: inline-block;">
-<!--                                 <form  action="/INOUT/admin/contacts/editpost"  method="POST" style="display: inline-block;">-->
-                                        <input type="hidden" name="ideditpost" value="{{$contact->id}}">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                           <input type="submit" class="btn btn-xs btn-info" value="{{ trans('global.edit') }}">
-                                    </form>
                                 @endcan
 
                                 @can('contact_delete')

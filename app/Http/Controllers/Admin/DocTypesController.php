@@ -36,18 +36,6 @@ class DocTypesController extends Controller
         return redirect()->route('admin.doc-types.index');
 
     }
-    
-          public function editpost(Request $request)
-            
-        {
-                
-            abort_if(Gate::denies('doc_type_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-           
-            $docType = DocType::find($request->ideditpost);
-                
-      return view('admin.docTypes.edit', compact('docType'));
-                
-            }
 
     public function edit(DocType $docType)
     {
@@ -63,12 +51,7 @@ class DocTypesController extends Controller
         return redirect()->route('admin.doc-types.index');
 
     }
-        public function showpost(Request $request)
-    {
-        abort_if(Gate::denies('doc_type_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-          $docType = DocType::find($request->idshowpost);
-     return view('admin.docTypes.show', compact('docType'));
-     }
+
     public function show(DocType $docType)
     {
         abort_if(Gate::denies('doc_type_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');

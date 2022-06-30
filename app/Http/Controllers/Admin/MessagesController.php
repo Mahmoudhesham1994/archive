@@ -490,35 +490,6 @@ $count_type =  count($stack)+1;
         return redirect()->route('admin.messages.index'); 
 
     }
-    
-    
-        public function editpost(Request $request)
-            
-        {
-             abort_if(Gate::denies('message_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-           // dd($request->ideditpost);
-            $message = Message::find($request->ideditpost);
-          //  echo $message;
-                    $msg_types = MsgType::all()->pluck('msg_type_desc', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $doc_types = DocType::all()->pluck('doc_type_desc', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $from_contacts = Contact::all()->pluck('contact_name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $priorities = Priority::all()->pluck('priority_desc', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-       // $rel_nums = Message::all()->pluck('num', 'id')->prepend(trans('global.pleaseSelect'), '');
-        $rel_nums = Message::all()->pluck('FullName', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $sent_tos = Contact::all()->pluck('contact_name', 'id');
-
-        $forward_tos = Contact::all()->pluck('contact_name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $message->load('msg_type', 'doc_type', 'from_contact', 'priority', 'rel_num', 'sent_tos', 'forward_to');
-     //echo $message;
-         //echo $message->message_doc;
-        return view('admin.messages.edit', compact('msg_types', 'doc_types', 'from_contacts', 'priorities', 'rel_nums', 'sent_tos', 'forward_tos', 'message'));
-        }
 
     public function edit(Message $message)
     {
@@ -620,17 +591,6 @@ $count_type =  count($stack)+1;
         return redirect()->route('admin.messages.index');
 
     }
-    
-    public function showpost(Request $request)
-    {
-         abort_if(Gate::denies('message_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-          $message = Message::find($request->idshowpost);
-                $message->load('msg_type', 'doc_type', 'from_contact', 'priority', 'rel_num', 'sent_tos', 'forward_to');
-
-        return view('admin.messages.show', compact('message'));
-
-        
-    }
 
     public function show(Message $message)
     {
@@ -648,8 +608,8 @@ $count_type =  count($stack)+1;
         $message->delete();
 
      //   return back();
- //   return redirect('http://172.23.101.27/INOUT/admin/messages');
- return redirect(asset('/admin/messages'));
+    return redirect('http://172.23.101.244/INOUT/admin/messages');
+
     }
 
     public function massDestroy(MassDestroyMessageRequest $request)
