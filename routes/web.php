@@ -23,6 +23,7 @@ Auth::routes(['register' => false]);
  //  Route::get('messages/needreplay', 'MessagesController@needreplay');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+      Route::get('messages/search', 'MessagesController@search');
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
@@ -53,6 +54,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('messages/media', 'MessagesController@storeMedia')->name('messages.storeMedia');
     Route::post('messages/ckmedia', 'MessagesController@storeCKEditorImages')->name('messages.storeCKEditorImages');
     Route::resource('messages', 'MessagesController');
+//  Route::get('messages/search', 'MessagesController@search');
   Route::post('messages/search', 'MessagesController@search');
    Route::get('messages/delete/{id}', 'MessagesController@delete');
    Route::get('message/needreplay', 'MessagesController@needreplay');

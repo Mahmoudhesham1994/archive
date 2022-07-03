@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 @can('user_management_access')
-                    <li class="nav-item has-treeview {{ request()->is('admin/permissions*') ? 'menu-open' : '' }} {{ request()->is('admin/roles*') ? 'menu-open' : '' }} {{ request()->is('admin/users*') ? 'menu-open' : '' }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/permissions*") ? "menu-open" : "" }} {{ request()->is("admin/roles*") ? "menu-open" : "" }} {{ request()->is("admin/users*") ? "menu-open" : "" }} {{ request()->is("admin/teams*") ? "menu-open" : "" }} {{ request()->is("admin/audit-logs*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-users">
 
@@ -34,7 +34,7 @@
                         <ul class="nav nav-treeview">
                             @can('permission_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.permissions.index") }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
+                                    <a href="{{ route("admin.permissions.index") }}" class="nav-link {{ request()->is("admin/permissions") || request()->is("admin/permissions/*") ? "active" : "" }}">
                                         <i class="fa-fw nav-icon fas fa-unlock-alt">
 
                                         </i>
@@ -46,7 +46,7 @@
                             @endcan
                             @can('role_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.roles.index") }}" class="nav-link {{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active' : '' }}">
+                                    <a href="{{ route("admin.roles.index") }}" class="nav-link {{ request()->is("admin/roles") || request()->is("admin/roles/*") ? "active" : "" }}">
                                         <i class="fa-fw nav-icon fas fa-briefcase">
 
                                         </i>
@@ -58,7 +58,7 @@
                             @endcan
                             @can('user_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
+                                    <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is("admin/users") || request()->is("admin/users/*") ? "active" : "" }}">
                                         <i class="fa-fw nav-icon fas fa-user">
 
                                         </i>
@@ -68,41 +68,77 @@
                                     </a>
                                 </li>
                             @endcan
-                        </ul>
-                    </li>
-                @endcan
-                @can('mail_management_access')
-                    <li class="nav-item has-treeview {{ request()->is('admin/messages*') ? 'menu-open' : '' }} {{ request()->is('admin/contacts*') ? 'menu-open' : '' }}">
-                        <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="fa-fw nav-icon far fa-envelope">
-
-                            </i>
-                            <p>
-                                {{ trans('cruds.mailManagement.title') }}
-                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            @can('message_access')
+                            @can('team_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.messages.index") }}" class="nav-link {{ request()->is('admin/messages') || request()->is('admin/messages/*') ? 'active' : '' }}">
-                                        <i class="fa-fw nav-icon far fa-envelope-open">
+                                    <a href="{{ route("admin.teams.index") }}" class="nav-link {{ request()->is("admin/teams") || request()->is("admin/teams/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-users">
 
                                         </i>
                                         <p>
-                                            {{ trans('cruds.message.title') }}
+                                            {{ trans('cruds.team.title') }}
                                         </p>
                                     </a>
                                 </li>
                             @endcan
-                            @can('contact_access')
+                            @can('audit_log_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.contacts.index") }}" class="nav-link {{ request()->is('admin/contacts') || request()->is('admin/contacts/*') ? 'active' : '' }}">
-                                        <i class="fa-fw nav-icon fas fa-address-book">
+                                    <a href="{{ route("admin.audit-logs.index") }}" class="nav-link {{ request()->is("admin/audit-logs") || request()->is("admin/audit-logs/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-file-alt">
 
                                         </i>
                                         <p>
-                                            {{ trans('cruds.contact.title') }}
+                                            {{ trans('cruds.auditLog.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
+                @can('main_access')
+                    <li class="nav-item has-treeview {{ request()->is("admin/archive-masters*") ? "menu-open" : "" }} {{ request()->is("admin/archive-docs*") ? "menu-open" : "" }} {{ request()->is("admin/view-archives*") ? "menu-open" : "" }}">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.main.title') }}
+                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @can('archive_master_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.archive-masters.index") }}" class="nav-link {{ request()->is("admin/archive-masters") || request()->is("admin/archive-masters/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-book">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.archiveMaster.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('archive_doc_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.archive-docs.index") }}" class="nav-link {{ request()->is("admin/archive-docs") || request()->is("admin/archive-docs/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon far fa-file">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.archiveDoc.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('view_archive_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.view-archives.index") }}" class="nav-link {{ request()->is("admin/view-archives") || request()->is("admin/view-archives/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-eye">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.viewArchive.title') }}
                                         </p>
                                     </a>
                                 </li>
@@ -111,9 +147,9 @@
                     </li>
                 @endcan
                 @can('setting_access')
-                    <li class="nav-item has-treeview {{ request()->is('admin/priorities*') ? 'menu-open' : '' }} {{ request()->is('admin/doc-types*') ? 'menu-open' : '' }} {{ request()->is('admin/msg-types*') ? 'menu-open' : '' }} {{ request()->is('admin/msg-statuses*') ? 'menu-open' : '' }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/departments*") ? "menu-open" : "" }} {{ request()->is("admin/document-types*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="fa-fw nav-icon fas fa-cogs">
+                            <i class="fa-fw nav-icon fas fa-wrench">
 
                             </i>
                             <p>
@@ -122,50 +158,26 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            @can('priority_access')
+                            @can('department_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.priorities.index") }}" class="nav-link {{ request()->is('admin/priorities') || request()->is('admin/priorities/*') ? 'active' : '' }}">
-                                        <i class="fa-fw nav-icon fas fa-ellipsis-v">
+                                    <a href="{{ route("admin.departments.index") }}" class="nav-link {{ request()->is("admin/departments") || request()->is("admin/departments/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
 
                                         </i>
                                         <p>
-                                            {{ trans('cruds.priority.title') }}
+                                            {{ trans('cruds.department.title') }}
                                         </p>
                                     </a>
                                 </li>
                             @endcan
-                            @can('doc_type_access')
+                            @can('document_type_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.doc-types.index") }}" class="nav-link {{ request()->is('admin/doc-types') || request()->is('admin/doc-types/*') ? 'active' : '' }}">
-                                        <i class="fa-fw nav-icon fas fa-list">
+                                    <a href="{{ route("admin.document-types.index") }}" class="nav-link {{ request()->is("admin/document-types") || request()->is("admin/document-types/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-cogs">
 
                                         </i>
                                         <p>
-                                            {{ trans('cruds.docType.title') }}
-                                        </p>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('msg_type_access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.msg-types.index") }}" class="nav-link {{ request()->is('admin/msg-types') || request()->is('admin/msg-types/*') ? 'active' : '' }}">
-                                        <i class="fa-fw nav-icon fas fa-list">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.msgType.title') }}
-                                        </p>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('msg_status_access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.msg-statuses.index") }}" class="nav-link {{ request()->is('admin/msg-statuses') || request()->is('admin/msg-statuses/*') ? 'active' : '' }}">
-                                        <i class="fa-fw nav-icon fas fa-list">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.msgStatus.title') }}
+                                            {{ trans('cruds.documentType.title') }}
                                         </p>
                                     </a>
                                 </li>
@@ -173,33 +185,17 @@
                         </ul>
                     </li>
                 @endcan
-                @can('archive_management_access')
-                    <li class="nav-item has-treeview {{ request()->is('admin/archives*') ? 'menu-open' : '' }}">
-                        <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="fa-fw nav-icon fas fa-cogs">
-
+                @if(\Illuminate\Support\Facades\Schema::hasColumn('teams', 'owner_id') && \App\Models\Team::where('owner_id', auth()->user()->id)->exists())
+                    <li class="nav-item">
+                        <a class="{{ request()->is("admin/team-members") || request()->is("admin/team-members/*") ? "active" : "" }} nav-link" href="{{ route("admin.team-members.index") }}">
+                            <i class="fa-fw fa fa-users nav-icon">
                             </i>
                             <p>
-                                {{ trans('cruds.archiveManagement.title') }}
-                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                                {{ trans("global.team-members") }}
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            @can('archive_access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.archives.index") }}" class="nav-link {{ request()->is('admin/archives') || request()->is('admin/archives/*') ? 'active' : '' }}">
-                                        <i class="fa-fw nav-icon fas fa-book">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.archive.title') }}
-                                        </p>
-                                    </a>
-                                </li>
-                            @endcan
-                        </ul>
                     </li>
-                @endcan
+                @endif
                 @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
                     @can('profile_password_edit')
                         <li class="nav-item">

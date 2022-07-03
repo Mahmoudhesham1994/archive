@@ -93,7 +93,8 @@ class MessagesController extends Controller
        if($request->num==""&$request->date_from==""&$request->date_to==""&$request->msg_type_id==""&$request->msg_title==""&$request->from_contact_id==""&$request->forward_to_id=="")
        {
          //  dd($request);
-                   $messages = Message::all();
+                  // $messages = Message::all();
+                   $messages = Message::paginate(20);
         $msg_types = MsgType::all()->pluck('msg_type_desc', 'id')->prepend(trans('global.pleaseSelect'), '');
              $from_contacts = Contact::all()->pluck('contact_name', 'id')->prepend(trans('global.pleaseSelect'), '');
         $forward_tos = Contact::all()->pluck('contact_name', 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -152,7 +153,8 @@ $msg_type_id = $request->msg_type_id;
     $query->where('num','like','%' .$request->num.'%');
 })            
               
-              ->get();
+              //->get();
+              ->paginate(20);
          //  echo count($mmm);
                   $msg_types = MsgType::all()->pluck('msg_type_desc', 'id')->prepend(trans('global.pleaseSelect'), '');
         
@@ -236,7 +238,8 @@ $msg_type_id = $request->msg_type_id;
         abort_if(Gate::denies('message_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
        // $messages = Message::all();
-        $messages = Message::orderBy('msg_date','DESC')->get();
+       // $messages = Message::orderBy('msg_date','DESC')->get();
+        $messages = Message::orderBy('msg_date','DESC')->paginate(20);;
 
         $msg_types = MsgType::all()->pluck('msg_type_desc', 'id')->prepend(trans('global.pleaseSelect'), '');
   $from_contacts = Contact::all()->pluck('contact_name', 'id')->prepend(trans('global.pleaseSelect'), '');

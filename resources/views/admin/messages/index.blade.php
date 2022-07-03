@@ -1,5 +1,45 @@
 @extends('layouts.admin')
 @section('content')
+<style>
+
+ 
+        .hidden{
+/*           display: none;*/
+/*
+            height: 50px;
+            width: 50px;
+*/
+        }
+/*
+    .hidden a{
+        display:inline;
+         width: 20px;
+        height: 20px;
+    }
+*/
+    .px-4{
+/*        display: none;*/
+    }
+/*
+    .hidden .w-5{
+        width: 20px;
+        height: 20px;
+    }
+*/
+    .dataTables_paginate{
+         display: none;
+    }
+    .dataTables_info
+    {
+        display: none; 
+    }
+/*
+    li{
+display:inline-block;
+        }
+*/
+
+</style>
 @can('message_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
@@ -9,13 +49,10 @@
         </div>
     </div>
 @endcan
+
 <div class="card">
-
- <div class="card-header">
-
-    
-<!--    <form method="POST" action="/admin/messages/search">-->
-    <form method="POST" action="/INOUT/admin/messages/search">
+    <div class="card-header">
+            <form method="POST" action="/INOUT_MNE/admin/messages/search">
         @csrf
      <div class="container-fluid ">
         <div class="row">
@@ -128,67 +165,20 @@
          
         
         </form>
-        <div class="container-fluid ">
+                 <div class="container-fluid ">
         <div class="row">
             <div class="col-12"> 
     {{ trans('cruds.message.title_singular') }} {{ trans('global.list') }}
         </div>
         </div>
         </div>
-<!-- </div>-->
- 
-{{--     <div class="col-md-4">
- <label>Num</label> <input type="text" name="Num">
-
-</div>
- --}}
-
-{{--        <div class="col-md-4">
-<label>Date From</label> <input name="date_from" type="date">
-           --}}
-
-{{-- </div>
-            <div class="col-md-4">
-      
-       <label>Date From</label>       <input name="date_to" type="date">
-     </div>
-    
-             
-    
-     
-
-</div>--}}
-{{--             <div class="row">
-                    <div class="col-md-4">
-            <label>Msg Type</label> 
-                        
-            <!--            <input type="text" name="msg_type">-->
-            <select style="width:148px; height:30px;"  name="msg_type_id" id="msg_type_id" >
-                                @foreach($msg_types as $id => $msg_type)
-                                    <option value="{{ $id }}" {{ old('msg_type_id') == $id ? 'selected' : '' }}>{{ $msg_type }}</option>
-                                @endforeach
-                            </select>
-            </div> --}}
-
-{{-- 
-      <div class="col-md-4">
-<label>Msg Title</label> <input type="text" name="msg_title"> --}}
-
-{{-- </div>
-      <div class="col-md-4">
-     <input type="submit" value="بحث" style="width:130px;" class="btn btn-primary ">
-          </div>
     </div>
- </form> --}}
-         
-         
-    
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Message">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-Contact">
                 <thead>
-                    <tr>
+                          <tr>
                         <th width="10">
 
                         </th>
@@ -248,7 +238,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($messages as $key => $message)
+                        @foreach($messages as $key => $message)
                         <tr data-entry-id="{{ $message->id }}">
                             <td>
 
@@ -329,6 +319,7 @@
             </table>
         </div>
     </div>
+          {{$messages->links("pagination::bootstrap-4")}}
 </div>
 
 
@@ -336,56 +327,14 @@
 @endsection
 @section('scripts')
 @parent
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-<!-- Include Date Range Picker -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
-
-
-
 <script>
-//        	$(document).ready(function(){
-//		var date_input=$('input[name="date_from"]'); //our date input has the name "date"
-//		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-//		date_input.datepicker({
-//			//format: 'mm/dd/yyyy',
-//			format: 'dd/mm/yyyy',
-//			container: container,
-//			todayHighlight: true,
-//			autoclose: true,
-//            rtl: true
-//		})
-//	})
-//    
-//     	$(document).ready(function(){
-//		var date_input=$('input[name="date_to"]'); //our date input has the name "date"
-//		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-//		date_input.datepicker({
-//			//format: 'mm/dd/yyyy',
-//            format: 'dd/mm/yyyy',
-//			container: container,
-//			todayHighlight: true,
-//			autoclose: true,
-//            rtl: true
-//		})
-//	})
-//    
-    
-    
-    
-    
-    
-    
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('message_delete')
+@can('contact_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.messages.massDestroy') }}",
+    url: "{{ route('admin.contacts.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -415,7 +364,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  $('.datatable-Message:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  $('.datatable-Contact:not(.ajaxTable)').DataTable({ buttons: dtButtons })
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
         $($.fn.dataTable.tables(true)).DataTable()
             .columns.adjust();
