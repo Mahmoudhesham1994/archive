@@ -32,7 +32,7 @@
 
 <body class="sidebar-mini layout-fixed" style="height: auto;">
     <div class="wrapper">
-        <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+         {{--<nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -41,7 +41,7 @@
             </ul>
 
             <!-- Right navbar links -->
-            @if(count(config('panel.available_languages', [])) > 1)
+           @if(count(config('panel.available_languages', [])) > 1)
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -56,7 +56,7 @@
                 </ul>
             @endif
 
-        </nav>
+        </nav>--}}
 
         {{--@include('partials.menu')--}}
         
